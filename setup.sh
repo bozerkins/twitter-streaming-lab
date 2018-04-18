@@ -17,8 +17,15 @@ tar zxf solr-7.3.0.tgz
 wget http://www-us.apache.org/dist/hadoop/common/hadoop-3.1.0/hadoop-3.1.0.tar.gz
 tar zxf hadoop-3.1.0.tar.gz
 
+wget http://www-eu.apache.org/dist/spark/spark-2.3.0/spark-2.3.0-bin-hadoop2.7.tgz
+tar zxf spark-2.3.0-bin-hadoop2.7.tgz
+
+
 # add them to path
 echo 'export PATH=$PATH:/home/vagrant/apache-flume-1.8.0-bin/bin/:/home/vagrant/solr-7.3.0/bin/:/home/vagrant/hadoop-3.1.0/bin/' >> ~/.bashrc
+echo 'export PATH=$PATH:/home/vagrant/spark-2.3.0-bin-hadoop2.7/bin/' >> ~/.bashrc
+echo 'export JAVA_HOME=/usr/lib/jvm/java-8-oracle/' >> ~/.bashrc
+echo 'export PYSPARK_PYTHON=python3' >> ~/.bashrc
 source ~/.bashrc
 
 # add cloudera flume sources
@@ -28,7 +35,11 @@ mkdir ~/apache-flume-1.8.0-bin/plugins.d/twitter-streaming/lib
 cp /vagrant/bin/flume-sources-1.0-SNAPSHOT.jar ~/apache-flume-1.8.0-bin/plugins.d/twitter-streaming/lib/flume-sources-1.0-SNAPSHOT.jar
 
 # copy flume libs
- cp /vagrant/bin/solr-sink/* ~/apache-flume-1.8.0-bin/lib/
+# cp /vagrant/bin/solr-sink/* ~/apache-flume-1.8.0-bin/lib/
 
 # grant everything
 chown vagrant:vagrant -R .
+
+# generate key
+ssh-keygen -t rsa -P ""
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
