@@ -20,6 +20,7 @@ tar zxf hadoop-3.1.0.tar.gz
 wget http://www-eu.apache.org/dist/spark/spark-2.3.0/spark-2.3.0-bin-hadoop2.7.tgz
 tar zxf spark-2.3.0-bin-hadoop2.7.tgz
 
+mkdir data
 
 # add them to path
 echo 'export PATH=$PATH:/home/vagrant/apache-flume-1.8.0-bin/bin/:/home/vagrant/solr-7.3.0/bin/:/home/vagrant/hadoop-3.1.0/bin/' >> ~/.bashrc
